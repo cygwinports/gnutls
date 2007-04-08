@@ -1,0 +1,6 @@
+category: Net
+requires: cygwin libgcrypt11 libintl8 libopencdk8 zlib
+external-source: gnutls
+sdesc: "GNU TLS secure transport layer library (runtime)"
+ldesc: "GnuTLS library implements the proposed standards by the IETF's 
+TLS working group for secure transport layers."
