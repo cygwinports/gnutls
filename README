@@ -8,7 +8,7 @@ Runtime requirements:
   libgcrypt11-1.2.4-1
   libintl8-0.15-1
   libopencdk8-0.5.13-1
-  libreadline6-5.2.1-6
+  libreadline6-5.2.4-8
   zlib-1.2.3-2
 
 Build requirements:
@@ -17,13 +17,12 @@ Build requirements:
   autoconf2.5-2.61-1
   automake1.9-1.9.6-2
   binutils-20060817-1
-  bison-2.3-1
-  cygport-0.2.11-1
-  flex-2.5.33-1
+  cygport-0.3.5-1
   gawk-3.1.5-4
   gcc-core-3.4.4-3
   libtool1.5-1.5.23a-2
   make-3.81-1
+  pkg-config-0.21-1
   sed-4.1.5-2
 
 Canonical website:
@@ -38,17 +37,17 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack gnutls-1.6.2-X-src.tar.bz2
+  unpack gnutls-1.6.3-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./gnutls-1.6.2-X.cygport all
+  cygport ./gnutls-1.6.3-X.cygport all
 
 This will create:
-  /usr/src/gnutls-1.6.2-X-src.tar.bz2
-  /usr/src/gnutls-1.6.2-X.tar.bz2
-  /usr/src/libgnutls-devel-1.6.2-X.tar.bz2
-  /usr/src/libgnutls13-1.6.2-X.tar.bz2
+  /usr/src/gnutls-1.6.3-X-src.tar.bz2
+  /usr/src/gnutls-1.6.3-X.tar.bz2
+  /usr/src/libgnutls-devel-1.6.3-X.tar.bz2
+  /usr/src/libgnutls13-1.6.3-X.tar.bz2
 
 -------------------------------------------
 
@@ -62,16 +61,16 @@ Files included in the binary packages:
   /usr/bin/gnutls-serv.exe
   /usr/bin/psktool.exe
   /usr/bin/srptool.exe
-  /usr/share/doc/Cygwin/gnutls-1.6.2.README
-  /usr/share/doc/gnutls-1.6.2/ABOUT-NLS
-  /usr/share/doc/gnutls-1.6.2/AUTHORS
-  /usr/share/doc/gnutls-1.6.2/COPYING
-  /usr/share/doc/gnutls-1.6.2/COPYING.LIB
-  /usr/share/doc/gnutls-1.6.2/ChangeLog
-  /usr/share/doc/gnutls-1.6.2/INSTALL
-  /usr/share/doc/gnutls-1.6.2/NEWS
-  /usr/share/doc/gnutls-1.6.2/README
-  /usr/share/doc/gnutls-1.6.2/THANKS
+  /usr/share/doc/Cygwin/gnutls-1.6.3.README
+  /usr/share/doc/gnutls-1.6.3/ABOUT-NLS
+  /usr/share/doc/gnutls-1.6.3/AUTHORS
+  /usr/share/doc/gnutls-1.6.3/COPYING
+  /usr/share/doc/gnutls-1.6.3/COPYING.LIB
+  /usr/share/doc/gnutls-1.6.3/ChangeLog
+  /usr/share/doc/gnutls-1.6.3/INSTALL
+  /usr/share/doc/gnutls-1.6.3/NEWS
+  /usr/share/doc/gnutls-1.6.3/README
+  /usr/share/doc/gnutls-1.6.3/THANKS
   /usr/share/info/gnutls.info-1.gz
   /usr/share/info/gnutls.info-10.gz
   /usr/share/info/gnutls.info-11.gz
@@ -540,6 +539,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 1.6.3-1 -----
+Version bump.
 
 ----- version 1.6.2-1 -----
 Version bump.
