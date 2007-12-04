@@ -1,5 +1,5 @@
 category: Net
-requires: cygwin libgnutls13 libgcrypt-devel gettext libopencdk-devel zlib
+requires: cygwin libgnutls13 libgcrypt-devel gettext libopencdk-devel libtasn1-devel zlib
 external-source: gnutls
 sdesc: "GNU TLS secure transport layer library (development)"
 ldesc: "GnuTLS library implements the proposed standards by the IETF's 

@@ -1,6 +1,6 @@
-category: Net
-requires: cygwin libgcrypt11 libintl8 libopencdk10 libtasn1_3 zlib
+category: Net Schee
+requires: cygwin libgcrypt11 libgnutls13 libguile17
 external-source: gnutls
-sdesc: "GNU TLS secure transport layer library (runtime)"
+sdesc: "GNU TLS secure transport layer library (Guile bindings)"
 ldesc: "GnuTLS library implements the proposed standards by the IETF's 
 TLS working group for secure transport layers."
