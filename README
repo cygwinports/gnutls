@@ -4,28 +4,28 @@ GnuTLS library implements the proposed standards by the IETF's TLS
 working group for secure transport layers.
 
 Runtime requirements:
-  cygwin-1.5.24-2
-  libgcrypt11-1.2.4-1
+  cygwin-1.5.25-15
+  libgcrypt11-1.4.0-1
   libintl8-0.15-1
-  libopencdk10-0.6.6-1
-  libreadline6-5.2.7-9
-  libtasn1_3-1.1-1
+  liblzo2-2.02-1
+  libreadline6-5.2.12-10
+  libtasn1_3-1.3-1
   zlib-1.2.3-2
 (guile-gnutls)
-  libguile17-1.8.3-1
+  libguile17-1.8.5-1
 
 Build requirements:
 (besides corresponding -devel packages)
-  cygwin-1.5.24-2
   autoconf2.5-2.61-1
-  automake1.10-1.10-1
-  binutils-20060817-1
-  cygport-0.3.7-1
-  gawk-3.1.5-4
+  automake1.10-1.10.1-1
+  binutils-20080523-2
+  cygport-0.3.12-1
+  gawk-3.1.6-1
   gcc-core-3.4.4-3
-  libtool1.5-1.5.23a-2
+  gcc-g++-3.4.4-3
+  libtool-2.2.2-2
   make-3.81-1
-  pkg-config-0.21-1
+  pkg-config-0.23a-2
   sed-4.1.5-2
 
 Canonical website:
@@ -40,18 +40,18 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack gnutls-2.0.4-X-src.tar.bz2
+  unpack gnutls-2.4.1-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./gnutls-2.0.4-X.cygport all
+  cygport ./gnutls-2.4.1-X.cygport all
 
 This will create:
-  /usr/src/gnutls-2.0.4-X-src.tar.bz2
-  /usr/src/gnutls-2.0.4-X.tar.bz2
-  /usr/src/guile-gnutls-2.0.4-X.tar.bz2
-  /usr/src/libgnutls-devel-2.0.4-X.tar.bz2
-  /usr/src/libgnutls13-2.0.4-X.tar.bz2
+  /usr/src/gnutls-2.4.1-X-src.tar.bz2
+  /usr/src/gnutls-2.4.1-X.tar.bz2
+  /usr/src/guile-gnutls-2.4.1-X.tar.bz2
+  /usr/src/libgnutls-devel-2.4.1-X.tar.bz2
+  /usr/src/libgnutls26-2.4.1-X.tar.bz2
 
 -------------------------------------------
 
@@ -65,62 +65,27 @@ Files included in the binary packages:
   /usr/bin/gnutls-serv.exe
   /usr/bin/psktool.exe
   /usr/bin/srptool.exe
-  /usr/share/doc/Cygwin/gnutls-2.0.4.README
-  /usr/share/doc/gnutls-2.0.4/ABOUT-NLS
-  /usr/share/doc/gnutls-2.0.4/AUTHORS
-  /usr/share/doc/gnutls-2.0.4/COPYING
-  /usr/share/doc/gnutls-2.0.4/COPYING.LIB
-  /usr/share/doc/gnutls-2.0.4/ChangeLog
-  /usr/share/doc/gnutls-2.0.4/INSTALL
-  /usr/share/doc/gnutls-2.0.4/NEWS
-  /usr/share/doc/gnutls-2.0.4/README
-  /usr/share/doc/gnutls-2.0.4/THANKS
-  /usr/share/info/gnutls-certificate-user-use-case.png.gz
-  /usr/share/info/gnutls-client-server-use-case.png.gz
-  /usr/share/info/gnutls-extensions_st.png.gz
-  /usr/share/info/gnutls-handshake-sequence.png.gz
-  /usr/share/info/gnutls-handshake-state.png.gz
-  /usr/share/info/gnutls-internals.png.gz
-  /usr/share/info/gnutls-layers.png.gz
-  /usr/share/info/gnutls-logo.png.gz
-  /usr/share/info/gnutls-mod_auth_st.png.gz
-  /usr/share/info/gnutls-objects.png.gz
-  /usr/share/info/gnutls-pgp.png.gz
-  /usr/share/info/gnutls-x509.png.gz
+  /usr/share/doc/gnutls-2.4.1/ABOUT-NLS
+  /usr/share/doc/gnutls-2.4.1/AUTHORS
+  /usr/share/doc/gnutls-2.4.1/COPYING
+  /usr/share/doc/gnutls-2.4.1/COPYING.LIB
+  /usr/share/doc/gnutls-2.4.1/ChangeLog
+  /usr/share/doc/gnutls-2.4.1/INSTALL
+  /usr/share/doc/gnutls-2.4.1/NEWS
+  /usr/share/doc/gnutls-2.4.1/README
+  /usr/share/doc/gnutls-2.4.1/THANKS
   /usr/share/info/gnutls.info-1.gz
-  /usr/share/info/gnutls.info-10.gz
-  /usr/share/info/gnutls.info-11.gz
-  /usr/share/info/gnutls.info-12.gz
-  /usr/share/info/gnutls.info-13.gz
-  /usr/share/info/gnutls.info-14.gz
-  /usr/share/info/gnutls.info-15.gz
-  /usr/share/info/gnutls.info-16.gz
-  /usr/share/info/gnutls.info-17.gz
-  /usr/share/info/gnutls.info-18.gz
-  /usr/share/info/gnutls.info-19.gz
   /usr/share/info/gnutls.info-2.gz
-  /usr/share/info/gnutls.info-20.gz
-  /usr/share/info/gnutls.info-21.gz
-  /usr/share/info/gnutls.info-22.gz
-  /usr/share/info/gnutls.info-23.gz
-  /usr/share/info/gnutls.info-24.gz
-  /usr/share/info/gnutls.info-25.gz
-  /usr/share/info/gnutls.info-26.gz
-  /usr/share/info/gnutls.info-27.gz
   /usr/share/info/gnutls.info-3.gz
-  /usr/share/info/gnutls.info-4.gz
-  /usr/share/info/gnutls.info-5.gz
-  /usr/share/info/gnutls.info-6.gz
-  /usr/share/info/gnutls.info-7.gz
-  /usr/share/info/gnutls.info-8.gz
-  /usr/share/info/gnutls.info-9.gz
   /usr/share/info/gnutls.info.gz
   /usr/share/locale/de/LC_MESSAGES/gnutls.mo
   /usr/share/locale/en@boldquot/LC_MESSAGES/gnutls.mo
   /usr/share/locale/en@quot/LC_MESSAGES/gnutls.mo
   /usr/share/locale/ms/LC_MESSAGES/gnutls.mo
+  /usr/share/locale/nl/LC_MESSAGES/gnutls.mo
   /usr/share/locale/pl/LC_MESSAGES/gnutls.mo
   /usr/share/locale/sv/LC_MESSAGES/gnutls.mo
+  /usr/share/locale/vi/LC_MESSAGES/gnutls.mo
   /usr/share/man/man1/certtool.1.gz
   /usr/share/man/man1/gnutls-cli-debug.1.gz
   /usr/share/man/man1/gnutls-cli.1.gz
@@ -128,25 +93,27 @@ Files included in the binary packages:
   /usr/share/man/man1/psktool.1.gz
   /usr/share/man/man1/srptool.1.gz
 
-(libgnutls13)
-  /usr/bin/cyggnutls-13.dll
-  /usr/bin/cyggnutls-extra-13.dll
-  /usr/bin/cyggnutls-openssl-13.dll
+(libgnutls26)
+  /usr/bin/cyggnutls-26.dll
+  /usr/bin/cyggnutls-extra-26.dll
+  /usr/bin/cyggnutls-openssl-26.dll
+  /usr/bin/cyggnutlsxx-26.dll
 
 (guile-gnutls)
-  /usr/lib/cygguile-gnutls-extra-v-0.dll
-  /usr/lib/cygguile-gnutls-v-0.dll
-  /usr/lib/libguile-gnutls-extra-v-0.la
-  /usr/lib/libguile-gnutls-v-0.la
+  /usr/lib/cygguile-gnutls-extra-v-1.dll
+  /usr/lib/cygguile-gnutls-v-1.dll
+  /usr/lib/libguile-gnutls-extra-v-1.la
+  /usr/lib/libguile-gnutls-v-1.la
   /usr/share/guile/site/gnutls.scm
   /usr/share/guile/site/gnutls/extra.scm
 
-(libgnutls-devel)
+(gnutls-devel)
   /usr/bin/libgnutls-config
   /usr/bin/libgnutls-extra-config
   /usr/include/gnutls/compat.h
   /usr/include/gnutls/extra.h
   /usr/include/gnutls/gnutls.h
+  /usr/include/gnutls/gnutlsxx.h
   /usr/include/gnutls/openpgp.h
   /usr/include/gnutls/openssl.h
   /usr/include/gnutls/pkcs12.h
@@ -160,6 +127,9 @@ Files included in the binary packages:
   /usr/lib/libgnutls.a
   /usr/lib/libgnutls.dll.a
   /usr/lib/libgnutls.la
+  /usr/lib/libgnutlsxx.a
+  /usr/lib/libgnutlsxx.dll.a
+  /usr/lib/libgnutlsxx.la
   /usr/lib/pkgconfig/gnutls-extra.pc
   /usr/lib/pkgconfig/gnutls.pc
   /usr/share/aclocal/libgnutls-extra.m4
@@ -597,6 +567,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.4.1-1 -----
+Version bump.
 
 ----- version 2.0.4-1 -----
 Version bump.
