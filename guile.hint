@@ -1,6 +1,0 @@
-category: Net Scheme
-requires: libgcrypt11 libgnutls26 libguile17
-external-source: gnutls
-sdesc: "GNU TLS secure transport layer library (Guile bindings)"
-ldesc: "GnuTLS library implements the proposed standards by the IETF's 
-TLS working group for secure transport layers."
