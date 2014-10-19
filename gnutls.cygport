@@ -1,5 +1,5 @@
 NAME="gnutls"
-VERSION=3.1.9
+VERSION=3.2.18
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Library implementing TLS 1.0 and SSL 3.0 protocols"
@@ -9,14 +9,18 @@ language application programming interface (API) to access the secure
 communications protocols as well as APIs to parse and write X.509, PKCS#12,
 OpenPGP and other required structures."
 HOMEPAGE="http://gnutls.org/"
-SRC_URI="ftp://ftp.gnutls.org/gcrypt/gnutls/v${VERSION%.*}/${NAME}-${VERSION}.1.tar.xz
-         ftp://ftp.gnutls.org/gcrypt/gnutls/v${VERSION%.*}/${NAME}-${VERSION}.1.tar.xz.sig"
-PATCH_URI="3.1.4-guile-module.patch"
+SRC_URI="ftp://ftp.gnutls.org/gcrypt/gnutls/v${VERSION%.*}/${NAME}-${VERSION}.tar.xz
+         ftp://ftp.gnutls.org/gcrypt/gnutls/v${VERSION%.*}/${NAME}-${VERSION}.tar.xz.sig"
+PATCH_URI="
+	3.1.4-guile-module.patch
+	3.2.18-autogen-vpath.patch
+"
 
 # Build dependencies only
 DEPEND="gtk-doc"
 
-PKG_NAMES="${NAME} lib${NAME}28 lib${NAME}-openssl27 lib${NAME}-xssl0 lib${NAME}-devel ${NAME}-doc guile-${NAME}"
+# FIXME: libgnutls-devel
+PKG_NAMES="${NAME} lib${NAME}28 lib${NAME}-openssl27 lib${NAME}-xssl0 ${NAME}-devel ${NAME}-doc guile-${NAME}"
 gnutls_SUMMARY="${SUMMARY} (utilities)"
 gnutls_CONTENTS="--exclude=gtk-doc --exclude=man3 --exclude=usr/share/doc/${NAME}/${NAME}.*
 	usr/bin/*.exe usr/share/doc/ usr/share/info/ usr/share/locale/ usr/share/man/man1/"
@@ -26,8 +30,8 @@ libgnutls_openssl27_SUMMARY="GnuTLS OpenSSL-compatible API (runtime)"
 libgnutls_openssl27_CONTENTS="usr/bin/cyggnutls-openssl-27.dll"
 libgnutls_xssl0_SUMMARY="GnuTLS experimental SSL API (runtime)"
 libgnutls_xssl0_CONTENTS="usr/bin/cyggnutls-xssl-0.dll"
-libgnutls_devel_SUMMARY="${SUMMARY} (development)"
-libgnutls_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/share/man/man3/"
+gnutls_devel_SUMMARY="${SUMMARY} (development)"
+gnutls_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/share/man/man3/"
 gnutls_doc_SUMMARY="${SUMMARY}(documentation)"
 gnutls_doc_CONTENTS="usr/share/doc/${NAME}/${NAME}.* usr/share/gtk-doc/"
 guile_gnutls_SUMMARY="${SUMMARY} (Guile bindings)"
