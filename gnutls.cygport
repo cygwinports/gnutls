@@ -1,5 +1,5 @@
 NAME="gnutls"
-VERSION=3.2.18
+VERSION=3.2.19
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Library implementing TLS 1.0 and SSL 3.0 protocols"
@@ -19,8 +19,8 @@ PATCH_URI="
 # Build dependencies only
 DEPEND="gtk-doc"
 
-# FIXME: libgnutls-devel
-PKG_NAMES="${NAME} lib${NAME}28 lib${NAME}-openssl27 lib${NAME}-xssl0 ${NAME}-devel ${NAME}-doc guile-${NAME}"
+# FIXME: libgnutls-devel lib${NAME}-openssl27 lib${NAME}-xssl0
+PKG_NAMES="${NAME} lib${NAME}28 ${NAME}-devel ${NAME}-doc guile-${NAME}"
 gnutls_SUMMARY="${SUMMARY} (utilities)"
 gnutls_CONTENTS="--exclude=gtk-doc --exclude=man3 --exclude=usr/share/doc/${NAME}/${NAME}.*
 	usr/bin/*.exe usr/share/doc/ usr/share/info/ usr/share/locale/ usr/share/man/man1/"
@@ -30,6 +30,7 @@ libgnutls_openssl27_SUMMARY="GnuTLS OpenSSL-compatible API (runtime)"
 libgnutls_openssl27_CONTENTS="usr/bin/cyggnutls-openssl-27.dll"
 libgnutls_xssl0_SUMMARY="GnuTLS experimental SSL API (runtime)"
 libgnutls_xssl0_CONTENTS="usr/bin/cyggnutls-xssl-0.dll"
+libgnutls28_CONTENTS+=" ${libgnutls_openssl27_CONTENTS} ${libgnutls_xssl0_CONTENTS}"
 gnutls_devel_SUMMARY="${SUMMARY} (development)"
 gnutls_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/share/man/man3/"
 gnutls_doc_SUMMARY="${SUMMARY}(documentation)"
