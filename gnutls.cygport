@@ -1,5 +1,5 @@
 NAME="gnutls"
-VERSION=3.2.19
+VERSION=3.2.20
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Library implementing TLS 1.0 and SSL 3.0 protocols"
