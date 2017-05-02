@@ -1,0 +1,20 @@
+--- origsrc/gnutls-3.3.27/src/gl/sys_select.in.h	2015-03-23 15:57:21.000000000 -0500
++++ src/gnutls-3.3.27/src/gl/sys_select.in.h	2017-05-01 22:01:15.228323600 -0500
+@@ -82,7 +82,7 @@
+    Also, Mac OS X, AIX, HP-UX, IRIX, Solaris, Interix declare select()
+    in <sys/time.h>.
+    But avoid namespace pollution on glibc systems.  */
+-# ifndef __GLIBC__
++# if !defined __GLIBC__ && !defined __NEWLIB__
+ #  include <sys/time.h>
+ # endif
+ 
+@@ -103,7 +103,7 @@
+    But avoid namespace pollution on glibc systems.
+    Do this after the include_next (for the sake of OpenBSD 5.0) but before
+    the split double-inclusion guard (for the sake of Solaris).  */
+-#if !(defined __GLIBC__ && !defined __UCLIBC__)
++#if !(defined __GLIBC__ && !defined __UCLIBC__) && !defined __CYGWIN__
+ # include <signal.h>
+ #endif
+ 
