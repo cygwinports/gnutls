@@ -1,0 +1,13 @@
+--- origsrc/gnutls-3.5.11/tests/Makefile.am	2017-04-07 00:52:07.000000000 -0500
++++ src/gnutls-3.5.11/tests/Makefile.am	2017-05-02 16:32:16.729518900 -0500
+@@ -57,8 +57,9 @@ COMMON_GNUTLS_LDADD = ../lib/libgnutls.l
+ COMMON_DEPS_LDADD = $(LIBSOCKET) $(INET_NTOP_LIB) $(INET_PTON_LIB) $(LIBSECCOMP)
+ COMMON_LDADD = $(COMMON_GNUTLS_LDADD) $(COMMON_DEPS_LDADD)
+ 
+-LDADD = $(COMMON_GNUTLS_LDADD) \
++LDADD = \
+ 	libutils.la \
++	$(COMMON_GNUTLS_LDADD) \
+ 	$(COMMON_DEPS_LDADD)
+ 
+ dane_LDADD = $(LDADD) ../libdane/libgnutls-dane.la

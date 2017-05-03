@@ -1,26 +1,28 @@
 NAME="gnutls"
-VERSION=3.3.27
+VERSION=3.5.11
 RELEASE=1
 CATEGORY="Libs"
-SUMMARY="Library implementing TLS 1.0 and SSL 3.0 protocols"
+SUMMARY="Library implementing TLS protocols"
 DESCRIPTION="GnuTLS is a secure communications library implementing the SSL,
 TLS and DTLS protocols and technologies around them. It provides a simple C
 language application programming interface (API) to access the secure
 communications protocols as well as APIs to parse and write X.509, PKCS#12,
 OpenPGP and other required structures."
 HOMEPAGE="http://gnutls.org/"
-SRC_URI="ftp://ftp.gnutls.org/gcrypt/gnutls/v${VERSION%.*}/gnutls-${VERSION}.tar.xz"
+#SRC_URI="ftp://ftp.gnutls.org/gcrypt/gnutls/v${VERSION%.*}/gnutls-${VERSION}.tar.xz"
+sha512sum=b47b9c6f270454ba626ca17b81c638993563ae6a9c6444e4e2392ee03c5673b790ab7cba52bab58bc1fa4b88bacc44ff11df26e4fc3c727eeb5624c3af8dcd38
+SRC_URI="http://pkgs.fedoraproject.org/repo/pkgs/gnutls/gnutls-${VERSION}-hobbled.tar.xz/sha512/${sha512sum}/gnutls-${VERSION}-hobbled.tar.xz"
 SRC_DIR="gnutls-${VERSION}"
 PATCH_URI="
-	3.3.27-gnulib-cygwin25.patch
-	3.3.27-testsuite.patch
+	3.5.11-hobbled.patch
+	3.5.11-parallel-make.patch
+	3.5.11-testsuite.patch
 "
 
 # Build dependencies only
 DEPEND="gtk-doc"
 
-# FIXME: lib${NAME}-openssl27 lib${NAME}-xssl0
-PKG_NAMES="${NAME} lib${NAME}28 lib${NAME}xx28 lib${NAME}-devel lib${NAME}-doc guile-${NAME}"
+PKG_NAMES="${NAME} lib${NAME}30 lib${NAME}-dane0 lib${NAME}xx28 lib${NAME}-devel lib${NAME}-doc guile-${NAME}"
 gnutls_SUMMARY="${SUMMARY} (utilities)"
 gnutls_CONTENTS="
 	--exclude=usr/share/doc/${NAME}/${NAME}.*
@@ -29,22 +31,26 @@ gnutls_CONTENTS="
 	usr/share/locale/
 	usr/share/man/man1/
 "
-libgnutls28_SUMMARY="${SUMMARY} (runtime)"
-libgnutls28_REQUIRES="ca-certificates"
-libgnutls28_CONTENTS="usr/bin/cyggnutls-28.dll"
-libgnutls_openssl27_SUMMARY="GnuTLS OpenSSL-compatible API (runtime)"
-libgnutls_openssl27_CONTENTS="usr/bin/cyggnutls-openssl-27.dll"
-libgnutls28_CONTENTS+=" ${libgnutls_openssl27_CONTENTS} ${libgnutls_xssl0_CONTENTS}"
+libgnutls30_SUMMARY="${SUMMARY} (runtime)"
+libgnutls30_REQUIRES="ca-certificates"
+libgnutls30_CONTENTS="usr/bin/cyggnutls-30.dll"
+libgnutls_dane0_SUMMARY="${SUMMARY} (DANE)"
+libgnutls_dane0_CONTENTS="usr/bin/cyggnutls-dane-0.dll"
 libgnutlsxx28_SUMMARY="${SUMMARY} (C++ bindings)"
 libgnutlsxx28_CONTENTS="usr/bin/cyggnutlsxx-28.dll"
 libgnutls_devel_SUMMARY="${SUMMARY} (development)"
-libgnutls_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/share/man/man3/"
+libgnutls_devel_CONTENTS="
+	usr/include/gnutls/
+	usr/lib/lib*
+	usr/lib/pkgconfig/*
+"
 libgnutls_doc_SUMMARY="${SUMMARY}(documentation)"
 libgnutls_doc_CONTENTS="
 	--exclude=gnutls-guile.info*
 	usr/share/doc/${NAME}/${NAME}.*
 	usr/share/gtk-doc/
 	usr/share/info/
+	usr/share/man/man3/*
 "
 guile_gnutls_SUMMARY="${SUMMARY} (Guile bindings)"
 guile_gnutls_CONTENTS="
@@ -60,18 +66,21 @@ CYGCONF_ARGS="
   --enable-gtk-doc-html
   --enable-cxx
   --enable-guile
+  --enable-libdane
   --disable-hardware-acceleration
   --enable-heartbeat-support
-  --with-default-trust-store-file=/etc/pki/tls/certs/ca-bundle.crt
+  --disable-non-suiteb-curves
+  --disable-openssl-compatibility
+  --disable-srp-authentication
+  --with-default-trust-store-pkcs11=pkcs11:
+  --with-unbound-root-key-file=/var/lib/unbound/root.key
 "
-
-MAKEOPTS="-j1"
 
 src_install() {
 	cd ${B}
 	cyginstall
 
-	rm -f ${D}/usr/bin/*.def
+	rm -f ${D}/usr/{bin,lib}/*.def
 }
 
 DOCS="doc/gnutls.html doc/gnutls.pdf doc/README.* doc/TODO"

@@ -1,0 +1,42 @@
+--- origsrc/gnutls-3.5.11/guile/modules/gnutls/build/smobs.scm	2015-01-19 11:38:09.000000000 -0600
++++ src/gnutls-3.5.11/guile/modules/gnutls/build/smobs.scm	2017-05-02 17:17:16.945486100 -0500
+@@ -173,14 +173,6 @@
+   (make-smob-type "gnutls_certificate_credentials_t" 'certificate-credentials
+                   "gnutls_certificate_free_credentials"))
+ 
+-(define %srp-server-credentials-smob
+-  (make-smob-type "gnutls_srp_server_credentials_t" 'srp-server-credentials
+-                  "gnutls_srp_free_server_credentials"))
+-
+-(define %srp-client-credentials-smob
+-  (make-smob-type "gnutls_srp_client_credentials_t" 'srp-client-credentials
+-                  "gnutls_srp_free_client_credentials"))
+-
+ (define %psk-server-credentials-smob
+   (make-smob-type "gnutls_psk_server_credentials_t" 'psk-server-credentials
+                   "gnutls_psk_free_server_credentials"))
+@@ -215,7 +207,6 @@
+   (list %session-smob %anonymous-client-credentials-smob
+         %anonymous-server-credentials-smob %dh-parameters-smob
+         %certificate-credentials-smob
+-        %srp-server-credentials-smob %srp-client-credentials-smob
+         %psk-server-credentials-smob %psk-client-credentials-smob
+         %x509-certificate-smob %x509-private-key-smob
+ 
+--- origsrc/gnutls-3.5.11/guile/src/core.c	2016-11-05 13:12:02.000000000 -0500
++++ src/gnutls-3.5.11/guile/src/core.c	2017-05-02 17:11:22.866062300 -0500
+@@ -2196,11 +2196,13 @@ SCM_DEFINE (scm_gnutls_server_session_ps
+ #define FUNC_NAME s_scm_gnutls_server_session_psk_username
+ {
+   SCM result;
+-  const char *c_username;
++  const char *c_username = NULL;
+   gnutls_session_t c_session;
+ 
+   c_session = scm_to_gnutls_session (session, 1, FUNC_NAME);
++#ifdef ENABLE_SRP
+   c_username = gnutls_srp_server_get_username (c_session);
++#endif
+ 
+   if (EXPECT_FALSE (c_username == NULL))
+     result = SCM_BOOL_F;
