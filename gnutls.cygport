@@ -1,5 +1,5 @@
 NAME="gnutls"
-VERSION=3.5.11
+VERSION=3.5.13
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Library implementing TLS protocols"
@@ -9,12 +9,9 @@ language application programming interface (API) to access the secure
 communications protocols as well as APIs to parse and write X.509, PKCS#12,
 OpenPGP and other required structures."
 HOMEPAGE="http://gnutls.org/"
-#SRC_URI="ftp://ftp.gnutls.org/gcrypt/gnutls/v${VERSION%.*}/gnutls-${VERSION}.tar.xz"
-sha512sum=b47b9c6f270454ba626ca17b81c638993563ae6a9c6444e4e2392ee03c5673b790ab7cba52bab58bc1fa4b88bacc44ff11df26e4fc3c727eeb5624c3af8dcd38
-SRC_URI="http://pkgs.fedoraproject.org/repo/pkgs/gnutls/gnutls-${VERSION}-hobbled.tar.xz/sha512/${sha512sum}/gnutls-${VERSION}-hobbled.tar.xz"
+SRC_URI="ftp://ftp.gnutls.org/gcrypt/gnutls/v${VERSION%.*}/gnutls-${VERSION}.tar.xz"
 SRC_DIR="gnutls-${VERSION}"
 PATCH_URI="
-	3.5.11-hobbled.patch
 	3.5.11-parallel-make.patch
 	3.5.11-testsuite.patch
 "
@@ -71,7 +68,6 @@ CYGCONF_ARGS="
   --enable-heartbeat-support
   --disable-non-suiteb-curves
   --disable-openssl-compatibility
-  --disable-srp-authentication
   --with-default-trust-store-pkcs11=pkcs11:
   --with-unbound-root-key-file=/var/lib/unbound/root.key
 "
