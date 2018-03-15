@@ -1,5 +1,7 @@
+inherit gnome2
+
 NAME="gnutls"
-VERSION=3.5.13
+VERSION=3.5.18
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Library implementing TLS protocols"
