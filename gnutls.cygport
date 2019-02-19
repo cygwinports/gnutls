@@ -1,7 +1,7 @@
 inherit gnome2
 
 NAME="gnutls"
-VERSION=3.5.18
+VERSION=3.6.6
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Library implementing TLS protocols"
@@ -31,7 +31,7 @@ gnutls_CONTENTS="
 	usr/share/man/man1/
 "
 libgnutls30_SUMMARY="${SUMMARY} (runtime)"
-libgnutls30_REQUIRES="ca-certificates"
+libgnutls30_REQUIRES="ca-certificates crypto-policies"
 libgnutls30_CONTENTS="usr/bin/cyggnutls-30.dll"
 libgnutls_dane0_SUMMARY="${SUMMARY} (DANE)"
 libgnutls_dane0_CONTENTS="usr/bin/cyggnutls-dane-0.dll"
@@ -58,7 +58,7 @@ guile_gnutls_CONTENTS="
 	usr/share/info/gnutls-guile.info*
 "
 
-DIFF_EXCLUDES="gnutls.info* m4"
+DIFF_EXCLUDES="gnutls.info* m4 stamp-vti version.texi"
 
 CYGCONF_ARGS="
   --enable-gtk-doc
@@ -70,6 +70,8 @@ CYGCONF_ARGS="
   --enable-heartbeat-support
   --disable-non-suiteb-curves
   --disable-openssl-compatibility
+  --with-system-priority-file=/etc/crypto-policies/back-ends/gnutls.config
+  --with-default-priority-string=@SYSTEM
   --with-default-trust-store-pkcs11=pkcs11:
   --with-unbound-root-key-file=/var/lib/unbound/root.key
 "
